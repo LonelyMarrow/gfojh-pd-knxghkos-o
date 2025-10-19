@@ -1,0 +1,66 @@
+:root { --bg: #0c0c0c; --text: #f1f1f1; --accent: #ff007f; --accent-2: #ffb347; --muted: #aaa; --max-w: 1200px;
+}
+* { margin: 0; padding: 0; box-sizing: border-box;
+}
+body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); scroll-behavior: smooth; overflow-x: hidden;
+}
+header { position: fixed; top: 0; left: 0; width: 100%; padding: 20px 60px; background: rgba(15, 15, 15, 0.7); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); z-index: 1000; text-align: center;
+}
+header h1 { font-size: 22px; color: #fff; letter-spacing: 1px;
+}
+.sidebar { position: fixed; left: 30px; top: 100px; bottom: 40px; width: 160px; display: flex; flex-direction: column; align-items: center; z-index: 50; pointer-events: none;
+}
+.progress-track { position: relative; width: 3px; height: 70vh; background: rgba(255, 255, 255, 0.05); border-radius: 2px;
+}
+.progress-fill { position: absolute; left: 0; top: 0; width: 100%; height: 0%; background: linear-gradient(180deg, var(--accent), var(--accent-2)); border-radius: 2px; transition: height 0.2s linear;
+}
+.ticks { position: absolute; left: 20px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: space-between; font-size: 13px; color: var(--muted); pointer-events: auto;
+}
+.tick .label { cursor: pointer; transition: 0.3s; opacity: 0.7; font-weight: 600;
+}
+.tick.active .label { color: #fff; opacity: 1; text-shadow: 0 0 5px var(--accent);
+}
+main { padding-top: 120px; max-width: var(--max-w); margin: 0 auto;
+}
+.section { position: relative; min-height: 100vh; display: flex; align-items: center; justify-content: space-between; padding: 100px 60px; gap: 60px; overflow: hidden;
+}
+.section::before { content: ""; position: absolute; inset: 0; background-size: cover; background-position: center; filter: blur(20px) brightness(0.4); z-index: -2;
+}
+.section::after { content: ""; position: absolute; inset: 0; background: rgba(0, 0, 0, 0.45); z-index: -1;
+}
+.section-content { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 40px;
+}
+.section-text { flex: 1; min-width: 300px; opacity: 0; transform: translateY(40px); transition: all 0.9s ease-out;
+}
+.section.active .section-text { opacity: 1; transform: translateY(0);
+}
+.section-text h2 { font-size: 42px; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; color: var(--accent-2);
+}
+.section-text p { line-height: 1.6; font-size: 18px; color: #ddd;
+}
+.section-text a { color: var(--accent-2); text-decoration: none;
+}
+.section-text a:hover { text-decoration: underline;
+}
+.section-img { flex: 1; min-width: 300px; text-align: center; opacity: 0; transform: scale(0.95); transition: all 0.9s ease-out;
+}
+.section.active .section-img { opacity: 1; transform: scale(1);
+}
+.section-img img { width: 100%; max-width: 500px; border-radius: 16px; box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+}
+.hero { flex-direction: column; text-align: center; justify-content: center;
+}
+.hero h2 { font-size: 56px; color: #fff; margin-bottom: 20px;
+}
+.hero p { font-size: 20px; max-width: 800px; line-height: 1.5; color: #ccc;
+}
+footer { text-align: center; padding: 40px 20px; background: rgba(255, 255, 255, 0.03); border-top: 1px solid rgba(255, 255, 255, 0.08); font-size: 14px; color: #aaa;
+}
+footer a { color: var(--accent-2);
+}
+footer a:hover { text-decoration: underline;
+}
+@media (max-width: 1000px) { .section { flex-direction: column; padding: 80px 30px; } .section-text h2 { font-size: 32px; } .section-text p { font-size: 16px; } .section-img img { max-width: 100%; } .sidebar { display: none; } header { padding: 16px 20px; } header h1 { font-size: 18px; }
+}
+@media (max-aspect-ratio: 4/3), (max-height: 700px) { .sidebar { display: none; }
+}
